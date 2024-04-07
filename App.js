@@ -2,13 +2,18 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Dictionary from './components/Dictionaty';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Provider } from "react-redux"
+import store from "./store/store.js"
+
 
 export default function App() {
   return (
     <SafeAreaView >
-      <View style={styles.container}>
-        <Dictionary/>
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Dictionary/>
+        </View>
+      </Provider>
     </SafeAreaView>
   );
 }
