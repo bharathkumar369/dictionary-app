@@ -22,8 +22,8 @@ const UseFetch = () => {
     }
 
     useEffect(()=> {
-        fetchData();
-    },[])
+        fetchData(word);
+    },[word])
 
     console.log(data)
 

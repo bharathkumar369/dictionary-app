@@ -1,26 +1,24 @@
 //import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Dictionary from './components/Dictionaty';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Provider } from "react-redux"
-import store from "./store/store.js"
-
+import { StyleSheet, Text, View } from "react-native";
+import Dictionary from "./components/Dictionaty";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Provider } from "react-redux";
+import store from "./store/store.js";
 
 export default function App() {
   return (
-    <SafeAreaView >
-      <Provider store={store}>
+    <Provider store={store}>
+      <SafeAreaView>
         <View style={styles.container}>
-          <Dictionary/>
+          <Dictionary />
         </View>
-      </Provider>
-    </SafeAreaView>
+      </SafeAreaView>
+    </Provider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding:5
+    padding: 5,
   },
-
 });

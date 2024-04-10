@@ -2,21 +2,17 @@ import React from "react";
 import { View,Image,StyleSheet,TouchableOpacity } from "react-native";
 // import dictionary from "../assets/dictionary"
 import {useSelector,useDispatch} from "react-redux"
-import { actions } from "../store/store";
 
+import { actions } from "../store/store";
 
 const Navbar = () => {
 
-    const toggle = useSelector((state)=>state.toggle)
-
     const dispatch = useDispatch();
 
-    const handleToggle = () => {
-        if(toggle){
-            dispatch(actions.on());
-        } else {
-            dispatch(actions.off())
-        }
+    const toggleChange = useSelector((state)=>state.toggle)
+
+    const change = () => {
+        dispatch(actions.change())
     }
 
     return(
@@ -28,26 +24,15 @@ const Navbar = () => {
                 />
             </View>
             <View style={styles.align}>
-                <View>
-                    <TouchableOpacity onPress={()=>handleToggle}>
-                        {
-                            toggle ? (
-                                <Image 
-                                    source={require("./images/toggle-off-black.png")}
-                                    style={styles.sideImage}
-                                />
-                            ) : (
-                                <Image 
-                                    source={require("./images/toggle-on-black.png")}
-                                    style={styles.sideImage}
-                                />
-                            )
-                        }
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity onPress={change}>
+                    <Image
+                        source={toggleChange ? require("./images/toggle-on-black.png") : require("./images/toggle-off-black.png")}
+                        style={styles.sideImage}
+                    />
+                </TouchableOpacity>
                 <View>
                     <Image
-                            source={require("./images/moon.png")}
+                            source={toggleChange ? require("./images/sun.png") : require("./images/moon.png")}
                             style = {styles.sideImage}
                         />
                 </View>

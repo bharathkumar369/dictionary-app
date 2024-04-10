@@ -1,11 +1,24 @@
 import React from "react";
-import { View } from "react-native";
+import { View,Text,StyleSheet } from "react-native";
+import { useSelector } from "react-redux"
 
-const Desctription = () => {
+const Description = () => {
+
+    const data = useSelector((state)=>state.data)
+
     return (
         <View>
-            
+
         </View>
-    )
-}
-export default Desctription;
+    );
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+});
+
+export default Description;
