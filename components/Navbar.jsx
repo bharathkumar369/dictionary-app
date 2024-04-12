@@ -3,7 +3,7 @@ import { View,Image,StyleSheet,TouchableOpacity } from "react-native";
 // import dictionary from "../assets/dictionary"
 import {useSelector,useDispatch} from "react-redux"
 
-import { actions } from "../store/store";
+import { actions } from "../store/toggle";
 
 const Navbar = () => {
 

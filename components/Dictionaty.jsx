@@ -7,12 +7,27 @@ import Navbar from "./Navbar";
 
 
 const Dictionary = () => {
+    
+
     return(
-        <View>
+        <View >
             <Navbar/>
             <Search/>
             <Desctription />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    dark:{
+        backgroundColor:"black",
+    },
+    light:{
+        backgroundColor:"white"
+    }
+
+})
 export default Dictionary;

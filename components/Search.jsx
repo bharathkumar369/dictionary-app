@@ -2,19 +2,16 @@ import React from "react";
 import { View,Text,StyleSheet,Image, TextInput,TouchableOpacity, } from "react-native"
 import { useFormik } from "formik";
 import * as Yup from "yup";
-//import { data } from "../hooks/useFetch";
-import { useSelector,useDispatch} from "react-redux";
-import { fetchData } from "../store/store.js";
+import { useDispatch} from "react-redux";
+import { fetchData } from "../store/search";
 
 const Search = () => {
 
-    //const [search,setSearch] = React.useState("keyboard")
-    const data = useSelector((state) =>state.data);
     const dispatch = useDispatch();
 
     const formik = useFormik({
         initialValues:{
-            search:data.word || ""
+            search:'keyboard'
         },
         validationSchema: Yup.object({
             search: Yup.string().required("Required").max(46,"Must be 45 characters or less ")
@@ -23,6 +20,10 @@ const Search = () => {
             dispatch(fetchData(values.search));
         }
     });
+
+    const handleSearch = () => {
+        dispatch(fetchData(formik.values.search))
+    }
 
     return(
         <View >
@@ -37,7 +38,7 @@ const Search = () => {
                 />
                 
                 <View style={styles.imageContainer}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={handleSearch}>
                         <Image
                             source={require("./images/search-color.png")}
                             style={styles.searchIcon}
