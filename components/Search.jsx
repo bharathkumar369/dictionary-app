@@ -34,11 +34,13 @@ const Search = () => {
                     id="search"
                     name="search"
                     value={formik.values.search}
+                    accessibilityLabel="Search"
+                    keyboardType="default"
                     onChangeText={formik.handleChange('search')}
                 />
                 
                 <View style={styles.imageContainer}>
-                    <TouchableOpacity onPress={handleSearch}>
+                    <TouchableOpacity onPress={handleSearch} accessible={true} accessibilityLabel="search">
                         <Image
                             source={require("./images/search-color.png")}
                             style={styles.searchIcon}

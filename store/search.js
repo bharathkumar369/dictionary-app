@@ -1,20 +1,24 @@
 import { configureStore,createAsyncThunk,createSlice} from "@reduxjs/toolkit"
-
+import axios from "axios"
 
 export const fetchData = createAsyncThunk(
-    "fetchData", async (search) => {
-        const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${search}`)
-        const data = await res.json();
-        return data;
+    "fetchData", async (data) => {
+        try {
+            const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${data}`);
+            return response.data
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 )
 
-
-
 const searchSlice = createSlice({
     name:"search",
-    initialState:{data:null,loading:false,error:null},
-    reducers:{},
+    initialState:{data:"",loading:false,error:null},
+    reducers:{
+        
+    },
     extraReducers:(builder)=>{
         builder.addCase(fetchData.pending,(state)=>{
             state.loading = true;
@@ -32,6 +36,7 @@ const searchSlice = createSlice({
     }
 })
 
+export const selectData = (state) => state.search.data;
 
 const store = configureStore({
     reducer:searchSlice.reducer
