@@ -18,6 +18,7 @@ const Search = () => {
         }),
         onSubmit: (values) => {
             dispatch(fetchData(values.search));
+            console.log(values)
         }
     });
 
@@ -37,12 +38,13 @@ const Search = () => {
                     accessibilityLabel="Search"
                     keyboardType="default"
                     onChangeText={formik.handleChange('search')}
+                    onSubmitEditing={formik.handleSubmit}
                 />
                 
                 <View style={styles.imageContainer}>
                     <TouchableOpacity onPress={handleSearch} accessible={true} accessibilityLabel="search">
                         <Image
-                            source={require("./images/search-color.png")}
+                            source={require("./images/search.png")}
                             style={styles.searchIcon}
                         />
                     </TouchableOpacity>
